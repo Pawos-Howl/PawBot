@@ -1,4 +1,4 @@
-import datetime #, time
+import datetime
 
 #Vars for easier calling and shorter programs
 def timeUpdate():
