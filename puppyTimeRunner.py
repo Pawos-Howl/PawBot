@@ -5,3 +5,4 @@ while True:
     req = input("")
     output = puppyTime.time(req)
     print(f'{output}\n')
+    
