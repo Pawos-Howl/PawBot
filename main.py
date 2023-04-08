@@ -15,7 +15,7 @@ bot = PawBot() # Move this to the top
 async def on_member_join(member):
     channel = await member.create_dm() # Create the channel and set it to a variable instead
     await channel.send(
-        f'Hewwo {member.name}! Welcome to the Pawos Howl Gang! Please read the rules and get your roles. This bot was coded by Paw herself (with a little help from some friends). Have fun and enjoy your stay! -Pawos Howl'
+        f'Hewwo {member.name}! Welcome to the Pawos Howl Gang! This bot was coded by Paw (with some help from friends). Have fun and enjoy your stay! -Pawos Howl'
         )
 
 @bot.event
