@@ -1,11 +1,12 @@
 import os
-from discord.ext.commands.cog import Cog
+#from discord.ext.commands.cog import Cog
 from discord.ext import commands
-from bot import PawBot
 
-client = PawBot()
-def setup(client):
-    client.add_cog(Cog(client))
+# from bot import PawBot
+
+# client = PawBot()
+# def setup(client):
+#     client.add_cog(Cog(client))
 
 class JoinAndLeave(commands.Cog):
     # OS path of ENV "os.getenv('GUILD_JOIN_AND_LEAVE_CHANNEL_ID')"
