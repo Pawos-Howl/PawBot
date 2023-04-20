@@ -20,6 +20,7 @@ class PawBot(Bot):
         self.JOIN_AND_LEAVE_CHANNEL = discord.Object(id=int(1097030111125045279))
         self.VERIFIED_CHANNEL = discord.Object(id=int(1092923045427027998))
         self.ROLES_CHANNEL = discord.Object(id=int(1092923070211162133))
+        self.STAFF_ALERTS_CHANNEL = discord.Object(id=int(1098338464321245224))
 
     async def on_ready(self): # All this function really needs to do is just say that its online, no need for any fancy stuff
         print("Bot is online!")
@@ -31,7 +32,7 @@ class PawBot(Bot):
             err_str = f"`{getattr(ex, '__module__')}:  {ex.args[0]}`"
             await ctx.reply(err_str)
         if isinstance(ex, CommandInvokeError):
-            #log.exception(ex.__cause__)z
+            #log.exception(ex.__cause__)
             raise ex.__cause__
         else:
             #log.exception(ex)

@@ -1,4 +1,5 @@
 import discord
+from discord import app_commands
 from discord.ext import commands
 from bot import PawBot
 
@@ -19,11 +20,14 @@ class verifiedRole(commands.Cog):
     #     msg = f'{member} joined on {member.joined_at} and has {len(member.roles)} roles.'
     #     await interaction.response.send_message(msg)
 
-    # @app_commands.command(name="verifiedTrigger")
-    # async def verifiedTrigger(self):
-    #     Channel = self.client.get_channel(self.VERIFIED_CHANNEL)
-    #     Moji = await Channel.send("TEXT")
-    #     await Moji.add_reaction('✅')
+    @app_commands.command(name="verifiedTrigger")
+    async def verifiedTrigger(self, interaction: discord.Interaction):
+        if interaction.user == self.client.MY_USER_ID:
+            Channel = self.client.get_channel(self.VERIFIED_CHANNEL)
+            Moji = await Channel.send("TEXT")
+            await Moji.add_reaction('✅')
+        else:
+            pass
     
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, reaction, user):
