@@ -20,7 +20,7 @@ class verifiedRole(commands.Cog):
     #     msg = f'{member} joined on {member.joined_at} and has {len(member.roles)} roles.'
     #     await interaction.response.send_message(msg)
 
-    @app_commands.command(name="verifiedTrigger")
+    @app_commands.command(name="verifiedtrigger")
     async def verifiedTrigger(self, interaction: discord.Interaction):
         if interaction.user == self.client.MY_USER_ID:
             Channel = self.client.get_channel(self.VERIFIED_CHANNEL)
