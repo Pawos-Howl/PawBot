@@ -1,5 +1,7 @@
 import os, discord
+from discord.errors import NotFound
 from discord.ext.commands import Cog
+from discord.app_commands.errors import CommandNotFound as AppCommandNotFound, CommandInvokeError
 # The following two lines break my code on windows. use on Mac (\n for spaces): from dotenv import load_dotenv \n load_dotenv()
 from bot import PawBot
 
@@ -13,16 +15,24 @@ def setup(client):
     client.add_cog(Cog(client))
 client = PawBot()
     
-# The following lines do not work correctly. Error with needing to have clienth CTX and Message be first in the order
-#@client.event
-#async def on_message(ctx, message: discord.message, *, member: discord.member):
-#    ## client triggering itself protection
-#    if message.author == client.user: return
-#    elif message == 'hewwo':
-#        #await message.channel.send("hewwo")
-#        await ctx.channel.send(f"hewwo {member}~ How are ya?")
-#    # Catchall is not needed
-#    #await client.process_commands(message)
+@client.tree.error
+async def on_app_command_error(interaction: discord.Interaction, error:Exception) -> None: # : discord.app_commands.AppCommandError
+    print(f"main: {type(error)}")
+    if isinstance(error, AppCommandNotFound): return
+    if isinstance(error, NotFound): return
+    if interaction.user.id == client.MY_USER_ID: 
+        err_str = f"`{getattr(error, '__module__')}:  {error.args[0]}`"
+        try:
+            await interaction.response.send_message(err_str)
+        except discord.errors.InteractionResponded:
+            pass
+
+    if isinstance(error, CommandInvokeError):
+        #return
+        # logger.exception(error.__cause__)
+        return
+
+    # logger.exception(error)
 
 @client.command()
 async def hewwo(ctx, member: discord.member):
