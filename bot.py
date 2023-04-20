@@ -3,9 +3,6 @@ import os
 # import logging
 from discord.ext.commands import Bot, CommandNotFound
 from discord.app_commands.errors import CommandInvokeError
-from greetingCommands import *
-from JoinAndLeave import *
-from reactionRoles import *
 
 #\u001b[38;5;82;1m
 # log = logging.getLogger("CaltrainAlerts.\u001b[38;5;82;1mBot\u001b[0m")
@@ -35,6 +32,6 @@ class PawBot(Bot):
         self.tree.copy_global_to(guild=self.MY_GUILD)
         await self.tree.sync(guild=self.MY_GUILD)
         #Cog Imports
-        await self.load_extension('Greetings')
+        await self.load_extension('greetingCommands')
         await self.load_extension('JoinAndLeave')
-        await self.load_extension('verifiedRole')
+        await self.load_extension('reactionRoles')
