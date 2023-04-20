@@ -1,11 +1,12 @@
 import discord
-from discord.ext.commands.cog import Cog
+#from discord.ext.commands.cog import Cog
 from discord.ext import commands
-from bot import PawBot
 
-client = PawBot()
-def setup(bot):
-    client.add_cog(Cog(client))
+# from bot import PawBot
+
+# client = PawBot()
+# def setup(client):
+#     client.add_cog(Cog(client))
 
 class Greetings(commands.Cog):
     @commands.command()
