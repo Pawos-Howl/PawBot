@@ -12,13 +12,6 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 def setup(client):
     client.add_cog(Cog(client))
 client = PawBot()
-
-@client.event
-async def on_member_join(member):
-    channel = await member.create_dm() # Create the channel and set it to a variable instead
-    await channel.send(
-        f'Hewwo {member.name}! Welcome to the Pawos Howl Gang! This client was coded by Paw (with some help from friends). Have fun and enjoy your stay! -Pawos Howl'
-        )
     
 # The following lines do not work correctly. Error with needing to have clienth CTX and Message be first in the order
 #@client.event
