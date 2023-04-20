@@ -2,8 +2,8 @@ import os, discord
 from discord.ext.commands import Cog
 # The following two lines break my code on windows. use on Mac (\n for spaces): from dotenv import load_dotenv \n load_dotenv()
 from bot import PawBot
-import platform # Check OS
 
+import platform # Check OS
 if platform.system() == "Darwin": # MacOS
     from dotenv import load_dotenv
     load_dotenv()
