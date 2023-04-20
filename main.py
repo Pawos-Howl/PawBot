@@ -1,41 +1,43 @@
 import os, discord
-# The following two lines break my code on windows. use on Mac
-#from dotenv import load_dotenv
-#load_dotenv()
-# Directory Inputs
-#import puppyTime
+from discord.ext.commands import Cog
+# The following two lines break my code on windows. use on Mac (\n for spaces): from dotenv import load_dotenv \n load_dotenv()
 from bot import PawBot
 
 TOKEN = os.getenv('DISCORD_TOKEN')
-# You dont need GUILD or intents here because you already did that in your bot file
+def setup(client):
+    client.add_cog(Cog(client))
+client = PawBot()
 
-bot = PawBot() # Move this to the top
-
-@bot.event
+@client.event
 async def on_member_join(member):
     channel = await member.create_dm() # Create the channel and set it to a variable instead
     await channel.send(
-        f'Hewwo {member.name}! Welcome to the Pawos Howl Gang! This bot was coded by Paw (with some help from friends). Have fun and enjoy your stay! -Pawos Howl'
+        f'Hewwo {member.name}! Welcome to the Pawos Howl Gang! This client was coded by Paw (with some help from friends). Have fun and enjoy your stay! -Pawos Howl'
         )
+    
+# The following lines do not work correctly. Error with needing to have clienth CTX and Message be first in the order
+#@client.event
+#async def on_message(ctx, message: discord.message, *, member: discord.member):
+#    ## client triggering itself protection
+#    if message.author == client.user: return
+#    elif message == 'hewwo':
+#        #await message.channel.send("hewwo")
+#        await ctx.channel.send(f"hewwo {member}~ How are ya?")
+#    # Catchall is not needed
+#    #await client.process_commands(message)
 
-@bot.event
-async def on_message(message):
-    ## Bot triggering itself protection
-    if message.author == bot.user: return
-    if message == 'hewwo':
-        await message.channel.send("hewwo")
-    # Catchall is not needed
-    await bot.process_commands(message)
+@client.command()
+async def hewwo(ctx, member: discord.member):
+    await ctx.send(f'Hewwo {member}! How are you doing?')
 
-
-@bot.command()
+@client.command()
 async def generalTest(ctx):
     await ctx.send('STANDARD TEST:\nRETURNED TRUE. TEST SUCESSFUL.')
 
-@bot.tree.command()
+@client.tree.command()
 async def info(interaction: discord.Interaction, member: discord.Member): # This is how you do slash commands; switched ctx for interaction
     """Tells you some info about the member."""
     msg = f'{member} joined on {member.joined_at} and has {len(member.roles)} roles.'
     await interaction.response.send_message(msg) # Instead of ctx.send, use interaction.response.send_message
 
-bot.run(TOKEN) # This ALWAYS is at the bottom of the file no matter what
+client.run(TOKEN) # This ALWAYS is at the bottom of the file no matter what
