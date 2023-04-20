@@ -5,7 +5,6 @@ from discord.ext.commands import Bot, CommandNotFound
 from discord.app_commands.errors import CommandInvokeError
 
 import platform # Check OS
-
 if platform.system() == "Darwin": # MacOS
     from dotenv import load_dotenv
     load_dotenv()
@@ -17,6 +16,9 @@ class PawBot(Bot):
     def __init__(self):
         super().__init__(intents=discord.Intents.all(),command_prefix="!paw ") # Do not set the command prefix to / since that is the default for slash commands
         self.MY_GUILD = discord.Object(id=int(os.getenv('DISCORD_GUILD'))) # Set this to the guild ID you want to use slash commands 
+        self.JOIN_AND_LEAVE_CHANNEL = discord.Object(id=int(1097030111125045279))
+        self.VERIFIED_CHANNEL = discord.Object(id=int(1092923045427027998))
+        self.ROLES_CHANNEL = discord.Object(id=int(1092923070211162133))
 
     async def on_ready(self): # All this function really needs to do is just say that its online, no need for any fancy stuff
         print("Bot is online!")
