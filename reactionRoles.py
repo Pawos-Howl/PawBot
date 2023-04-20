@@ -2,6 +2,12 @@ import discord, os
 #from discord.ext.commands.cog import Cog
 from discord.ext import commands
 
+import platform # Check OS
+
+if platform.system() == "Darwin": # MacOS
+    from dotenv import load_dotenv
+    load_dotenv()
+
 # from bot import PawBot
 
 # client = PawBot()
