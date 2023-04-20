@@ -3,6 +3,9 @@ import os
 # import logging
 from discord.ext.commands import Bot, CommandNotFound
 from discord.app_commands.errors import CommandInvokeError
+from greetingCommands import *
+from JoinAndLeave import *
+from reactionRoles import *
 
 #\u001b[38;5;82;1m
 # log = logging.getLogger("CaltrainAlerts.\u001b[38;5;82;1mBot\u001b[0m")
