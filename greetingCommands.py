@@ -1,14 +1,12 @@
 import discord
-#from discord.ext.commands.cog import Cog
 from discord.ext import commands
+from bot import PawBot
 
-# from bot import PawBot
+class Greetings(commands.Cog,):
+    def __init__(self, client):
+        self.client: PawBot = client
 
-# client = PawBot()
-# def setup(client):
-#     client.add_cog(Cog(client))
-
-class Greetings(commands.Cog):
+    #Following Command has problems with the "_last_member" thing
     @commands.command()
     async def hello(self, ctx, *, member: discord.Member = None):
         """Says hello"""
@@ -18,3 +16,6 @@ class Greetings(commands.Cog):
         else:
             await ctx.send(f'Hello {member.name}... This feels familiar.')
         self._last_member = member
+
+async def setup(bot):
+    await bot.add_cog(Greetings(bot))
