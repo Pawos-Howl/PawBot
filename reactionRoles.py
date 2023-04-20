@@ -23,7 +23,7 @@ class verifiedRole(commands.Cog):
     @app_commands.command(name="verifiedtrigger")
     async def verifiedTrigger(self, interaction: discord.Interaction):
         if interaction.user == self.client.MY_USER_ID:
-            Channel = self.client.get_channel(self.VERIFIED_CHANNEL)
+            Channel = self.client.get_channel(self.client.VERIFIED_CHANNEL)
             Moji = await Channel.send("TEXT")
             await Moji.add_reaction('✅')
         else:
@@ -31,7 +31,7 @@ class verifiedRole(commands.Cog):
     
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, reaction, user):
-        Channel = self.client.get_channel(self.VERIFIED_CHANNEL)
+        Channel = self.client.get_channel(self.client.VERIFIED_CHANNEL)
         if reaction.message.channel.id != Channel.id:
             return
         if reaction.emoji == "✅":
@@ -39,7 +39,7 @@ class verifiedRole(commands.Cog):
             await user.add_roles(Role)
     @commands.Cog.listener()
     async def on_raw_reaction_remove(self, reaction, user):
-        Channel = self.client.get_channel(self.VERIFIED_CHANNEL)
+        Channel = self.client.get_channel(self.client.VERIFIED_CHANNEL)
         if reaction.message.channel.id != Channel.id:
             return
         if reaction.emoji == "✅":
