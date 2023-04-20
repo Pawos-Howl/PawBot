@@ -23,9 +23,9 @@ class verifiedRole(commands.Cog):
     @app_commands.command(name="verifiedtrigger")
     async def verifiedTrigger(self, interaction: discord.Interaction):
         if interaction.user == self.client.MY_USER_ID:
-            Channel = self.client.get_channel(self.client.VERIFIED_CHANNEL)
-            Moji = await Channel.send("TEXT")
-            await Moji.add_reaction('✅')
+            msg = "BARK BARK BARK"
+            await interaction.response.send_message(msg)
+            await msg.add_reaction('✅')
         else:
             pass
     
