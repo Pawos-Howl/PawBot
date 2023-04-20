@@ -31,3 +31,7 @@ class PawBot(Bot):
     async def setup_hook(self):
         self.tree.copy_global_to(guild=self.MY_GUILD)
         await self.tree.sync(guild=self.MY_GUILD)
+        #Cog Imports
+        await self.load_extension('Greetings')
+        await self.load_extension('JoinAndLeave')
+        await self.load_extension('verifiedRole')
