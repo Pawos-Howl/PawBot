@@ -22,18 +22,18 @@ class verifiedRole(commands.Cog):
 
     @app_commands.command(name="verifiedtrigger")
     async def verifiedTrigger(self, interaction: discord.Interaction):
-        if interaction.user == self.client.MY_USER_ID:
-            msg = "BARK BARK BARK"
+        if interaction.user.id == self.client.MY_USER_ID:
+            msg = "By reacting to this message, you will gain access to the rest of the server and agree to our server rules."
             await interaction.response.send_message(msg)
             await msg.add_reaction('✅')
         else:
-            channel = await interaction.user.create_dm() # Create the channel and set it to a variable instead
+            channel = await interaction.user.create_dm()
             await channel.send(
             f'{interaction.user}! You are not allowed to run the `verifiedTrigger` command! Your attempt will be logged.'
             )
             channel = self.client.get_channel(self.client.VERIFIED_CHANNEL)
             await channel.send(
-            f''
+            f'NOT ALLOWED COMMAND USAGE ALERT! User: {interaction.user} (User ID: {interaction.user.id}) Violating command: `verifiedTrigger`'
             )
     
     @commands.Cog.listener()
@@ -44,16 +44,33 @@ class verifiedRole(commands.Cog):
         if reaction.emoji == "✅":
             Role = discord.utils.get(user.server.roles, name="YOUR_ROLE_NAME_HERE")
             await user.add_roles(Role)
-    @commands.Cog.listener()
-    async def on_raw_reaction_remove(self, reaction, user):
-        Channel = self.client.get_channel(self.client.VERIFIED_CHANNEL)
-        if reaction.message.channel.id != Channel.id:
-            return
-        if reaction.emoji == "✅":
-            Role = discord.utils.get(user.server.roles, name="YOUR_ROLE_NAME_HERE")
-            await user.remove_roles(Role)
+    # Below is commented out, because the client shouldn't be able to unverify themselves
+    # @commands.Cog.listener()
+    # async def on_raw_reaction_remove(self, reaction, user):
+    #     Channel = self.client.get_channel(self.client.VERIFIED_CHANNEL)
+    #     if reaction.message.channel.id != Channel.id:
+    #         return
+    #     if reaction.emoji == "✅":
+    #         Role = discord.utils.get(user.server.roles, name="YOUR_ROLE_NAME_HERE")
+    #         await user.remove_roles(Role)
 
 class reactionRoles(commands.Cog):
+    @app_commands.command(name="rolestrigger")
+    async def rolesTrigger(self, interaction: discord.Interaction):
+        if interaction.user.id == self.client.MY_USER_ID:
+            msg = "BARK BARK BARK"
+            await interaction.response.send_message(msg)
+            await msg.add_reaction('✅')
+        else:
+            channel = await interaction.user.create_dm()
+            await channel.send(
+            f'{interaction.user}! You are not allowed to run the `verifiedTrigger` command! Your attempt will be logged.'
+            )
+            channel = self.client.get_channel(self.client.VERIFIED_CHANNEL)
+            await channel.send(
+            f'NOT ALLOWED COMMAND USAGE ALERT! User: {interaction.user} (User ID: {interaction.user.id}) Violating command: `verifiedTrigger`'
+            )
+    
     pass #"ROLES_CHANNEL" in "self"
 
 async def setup(bot):
