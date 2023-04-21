@@ -51,12 +51,16 @@ class verifiedRole(commands.Cog):
         if reaction.message.channel.id != Channel.id:
             return
         if reaction.emoji == "✅":
-            pass
+            pass #The bot needs to give the reaction back to the user
             # Below is commented out, because the client shouldn't be able to unverify themselves
             #Role = discord.utils.get(user.server.roles, name="YOUR_ROLE_NAME_HERE")
             #await user.remove_roles(Role)
 
 class reactionRoles(commands.Cog):
+    def __init__(self, client):
+        self.client: PawBot = client
+
+    # The trigger is not properly set up...
     @app_commands.command(name="rolestrigger")
     async def rolesTrigger(self, interaction: discord.Interaction):
         if interaction.user.id == self.client.MY_USER_ID:
@@ -68,7 +72,7 @@ class reactionRoles(commands.Cog):
             await channel.send(
             f'{interaction.user}! You are not allowed to run the `verifiedTrigger` command! Your attempt will be logged.'
             )
-            channel = self.client.get_channel(self.client.VERIFIED_CHANNEL)
+            channel = self.client.get_channel(self.client.ROLES_CHANNEL)
             await channel.send(
             f'NOT ALLOWED COMMAND USAGE ALERT! User: {interaction.user} (User ID: {interaction.user.id}) Violating command: `verifiedTrigger`'
             )

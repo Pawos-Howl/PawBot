@@ -20,6 +20,7 @@ class PawBot(Bot):
         self.JOIN_AND_LEAVE_CHANNEL = discord.Object(id=int(1097030111125045279))
         self.VERIFIED_CHANNEL = discord.Object(id=int(1092923045427027998))
         self.ROLES_CHANNEL = discord.Object(id=int(1092923070211162133))
+        self.DENIED_COMMAND_USAGE = discord.Object(id=int(1099002597253320706))
         self.STAFF_ALERTS_CHANNEL = discord.Object(id=int(1098338464321245224))
 
     async def on_ready(self): # All this function really needs to do is just say that its online, no need for any fancy stuff
