@@ -27,7 +27,14 @@ class verifiedRole(commands.Cog):
             await interaction.response.send_message(msg)
             await msg.add_reaction('✅')
         else:
-            pass
+            channel = await interaction.user.create_dm() # Create the channel and set it to a variable instead
+            await channel.send(
+            f'{interaction.user}! You are not allowed to run the `verifiedTrigger` command! Your attempt will be logged.'
+            )
+            channel = self.client.get_channel(self.client.VERIFIED_CHANNEL)
+            await channel.send(
+            f''
+            )
     
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, reaction, user):
