@@ -44,15 +44,17 @@ class verifiedRole(commands.Cog):
         if reaction.emoji == "✅":
             Role = discord.utils.get(user.server.roles, name="YOUR_ROLE_NAME_HERE")
             await user.add_roles(Role)
-    # Below is commented out, because the client shouldn't be able to unverify themselves
-    # @commands.Cog.listener()
-    # async def on_raw_reaction_remove(self, reaction, user):
-    #     Channel = self.client.get_channel(self.client.VERIFIED_CHANNEL)
-    #     if reaction.message.channel.id != Channel.id:
-    #         return
-    #     if reaction.emoji == "✅":
-    #         Role = discord.utils.get(user.server.roles, name="YOUR_ROLE_NAME_HERE")
-    #         await user.remove_roles(Role)
+
+    @commands.Cog.listener()
+    async def on_raw_reaction_remove(self, reaction, user):
+        Channel = self.client.get_channel(self.client.VERIFIED_CHANNEL)
+        if reaction.message.channel.id != Channel.id:
+            return
+        if reaction.emoji == "✅":
+            pass
+            # Below is commented out, because the client shouldn't be able to unverify themselves
+            #Role = discord.utils.get(user.server.roles, name="YOUR_ROLE_NAME_HERE")
+            #await user.remove_roles(Role)
 
 class reactionRoles(commands.Cog):
     @app_commands.command(name="rolestrigger")
