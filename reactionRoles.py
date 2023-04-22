@@ -42,7 +42,7 @@ class verifiedRole(commands.Cog):
         if reaction.message.channel.id != Channel.id:
             return
         if reaction.emoji == "✅":
-            Role = discord.utils.get(user.server.roles, name="YOUR_ROLE_NAME_HERE")
+            Role = discord.utils.get(user.server.roles, id="1024080236280811550")
             await user.add_roles(Role)
 
     @commands.Cog.listener()
@@ -52,7 +52,7 @@ class verifiedRole(commands.Cog):
             return
         if reaction.emoji == "✅":
             pass #The bot needs to give the reaction back to the user
-            # Below is commented out, because the client shouldn't be able to unverify themselves
+            # Below is commented out, because the client shouldn't be able to unverify themselves :3
             #Role = discord.utils.get(user.server.roles, name="YOUR_ROLE_NAME_HERE")
             #await user.remove_roles(Role)
 
@@ -77,7 +77,23 @@ class reactionRoles(commands.Cog):
             f'NOT ALLOWED COMMAND USAGE ALERT! User: {interaction.user} (User ID: {interaction.user.id}) Violating command: `verifiedTrigger`'
             )
     
-    pass #"ROLES_CHANNEL" in "self"
+    @commands.Cog.listener()
+    async def on_raw_reaction_add(self, reaction, user):
+        Channel = self.client.get_channel(self.client.VERIFIED_CHANNEL)
+        if reaction.message.channel.id != Channel.id:
+            return
+        if reaction.emoji == "✅":
+            Role = discord.utils.get(user.server.roles, name="YOUR_ROLE_NAME_HERE")
+            await user.add_roles(Role)
+
+    @commands.Cog.listener()
+    async def on_raw_reaction_remove(self, reaction, user):
+        Channel = self.client.get_channel(self.client.VERIFIED_CHANNEL)
+        if reaction.message.channel.id != Channel.id:
+            return
+        if reaction.emoji == "✅":
+            Role = discord.utils.get(user.server.roles, name="YOUR_ROLE_NAME_HERE")
+            await user.remove_roles(Role)
 
 async def setup(bot):
     await bot.add_cog(verifiedRole(bot))

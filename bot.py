@@ -36,8 +36,9 @@ class PawBot(Bot):
             #log.exception(ex.__cause__)
             raise ex.__cause__
         else:
+            pass
             #log.exception(ex)
-            raise ex.__cause__
+            #raise ex.__cause__
 
     async def setup_hook(self):
         self.tree.copy_global_to(guild=self.MY_GUILD)
@@ -46,3 +47,5 @@ class PawBot(Bot):
         await self.load_extension('greetingCommands')
         await self.load_extension('JoinAndLeave')
         await self.load_extension('reactionRoles')
+        await self.load_extension('tests')
+        await self.load_extension('info')
