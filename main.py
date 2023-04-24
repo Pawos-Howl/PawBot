@@ -38,6 +38,7 @@ async def on_app_command_error(interaction: discord.Interaction, error:Exception
 async def hewwo(ctx, member: discord.member):
     await ctx.send(f'Hewwo {member}! How are you doing?')
 
+#Might work in "tests" file
 # @client.command()
 # async def generalTest(ctx):
 #     await ctx.send('STANDARD TEST:\nRETURNED TRUE. TEST SUCESSFUL.')
