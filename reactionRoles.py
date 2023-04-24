@@ -46,12 +46,16 @@ class verifiedRole(commands.Cog):
             await user.add_roles(Role)
 
     @commands.Cog.listener()
-    async def on_raw_reaction_remove(self, reaction, user):
+    async def on_raw_reaction_remove(self, reaction, interaction: discord.Interaction):
         Channel = self.client.get_channel(self.client.VERIFIED_CHANNEL)
         if reaction.message.channel.id != Channel.id:
             return
         if reaction.emoji == "✅":
-            pass #The bot needs to give the reaction back to the user
+            channel = await interaction.user.create_dm()
+            await channel.send(
+            f'Oh {interaction.user.name}, you silly floof. You can\'t *unverify*. Still cute for trying though~'
+            )
+            #The bot needs to give the reaction back to the user
             # Below is commented out, because the client shouldn't be able to unverify themselves :3
             #Role = discord.utils.get(user.server.roles, name="YOUR_ROLE_NAME_HERE")
             #await user.remove_roles(Role)
