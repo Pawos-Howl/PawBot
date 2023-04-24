@@ -14,7 +14,7 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 def setup(client):
     client.add_cog(Cog(client))
 client = PawBot()
-    
+
 @client.tree.error
 async def on_app_command_error(interaction: discord.Interaction, error:Exception) -> None: # : discord.app_commands.AppCommandError
     print(f"main: {type(error)}")
