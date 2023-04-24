@@ -42,7 +42,7 @@ class verifiedRole(commands.Cog):
         if reaction.message.channel.id != Channel.id:
             return
         if reaction.emoji == "✅":
-            Role = discord.utils.get(user.server.roles, id="1024080236280811550")
+            Role = discord.utils.get(user.server.roles, id=int(1024080236280811550))
             await user.add_roles(Role)
 
     @commands.Cog.listener()
