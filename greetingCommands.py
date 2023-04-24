@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from bot import PawBot
 
-class Greetings(commands.Cog,):
+class Greetings(commands.Cog):
     def __init__(self, client):
         self.client: PawBot = client
         self._last_member = None
