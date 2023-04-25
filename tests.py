@@ -8,7 +8,7 @@ class Tests(commands.Cog):
     #Seems to work now?
     @commands.command()
     async def generalTest(self, ctx):
-        await ctx.send('STANDARD TEST:\nRETURNED TRUE. TEST SUCESSFUL.')
+        await ctx.send(':3')
         #channel = 
         #await channel.send('STANDARD TEST:\nRETURNED TRUE. TEST SUCESSFUL.')
 
