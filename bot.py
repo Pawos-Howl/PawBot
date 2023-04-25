@@ -1,6 +1,6 @@
 import discord
 import os
-# import logging
+import logging
 from discord.ext.commands import Bot, CommandNotFound
 from discord.app_commands.errors import CommandInvokeError
 
@@ -9,8 +9,9 @@ if platform.system() == "Darwin": # MacOS
     from dotenv import load_dotenv
     load_dotenv()
 
+# Thank you Ovlic for the code
 #\u001b[38;5;82;1m
-# log = logging.getLogger("CaltrainAlerts.\u001b[38;5;82;1mBot\u001b[0m")
+log = logging.getLogger("PawBot.\u001b[38;5;82;1mBot\u001b[0m")
 
 class PawBot(Bot):
     def __init__(self):
@@ -33,12 +34,11 @@ class PawBot(Bot):
             err_str = f"`{getattr(ex, '__module__')}:  {ex.args[0]}`"
             await ctx.reply(err_str)
         if isinstance(ex, CommandInvokeError):
-            #log.exception(ex.__cause__)
+            log.exception(ex.__cause__)
             raise ex.__cause__
         else:
-            pass
-            #log.exception(ex)
-            #raise ex.__cause__
+            log.exception(ex)
+            raise ex.__cause__
 
     async def setup_hook(self):
         self.tree.copy_global_to(guild=self.MY_GUILD)
