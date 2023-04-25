@@ -1,6 +1,4 @@
-import discord
-import os
-import logging
+import discord, os, logging
 from discord.ext.commands import Bot, CommandNotFound
 from discord.app_commands.errors import CommandInvokeError
 
