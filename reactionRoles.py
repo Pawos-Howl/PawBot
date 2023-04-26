@@ -22,6 +22,7 @@ class verifiedRole(commands.Cog):
 
     @app_commands.command(name="verifiedtrigger")
     async def verifiedTrigger(self, interaction: discord.Interaction):
+        """[WIP!] Trigger the message for the verification message to be sent!"""
         if interaction.user.id == self.client.MY_USER_ID:
             msg = "By reacting to this message, you will gain access to the rest of the server and agree to our server rules."
             await interaction.response.send_message(msg)
@@ -67,6 +68,7 @@ class reactionRoles(commands.Cog):
     # The trigger is not properly set up...
     @app_commands.command(name="rolestrigger")
     async def rolesTrigger(self, interaction: discord.Interaction):
+        """[>:3 WIP!] This triggers the roles message!"""
         if interaction.user.id == self.client.MY_USER_ID:
             msg = "BARK BARK BARK"
             await interaction.response.send_message(msg)
