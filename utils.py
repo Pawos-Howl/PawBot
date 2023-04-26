@@ -80,7 +80,7 @@ def setupLogger():
     handler = logging.StreamHandler()
     dt_fmt = '%Y-%m-%d %H:%M:%S'
     formatter = CustomFormatter()
-    logger = logging.getLogger("CaltrainAlerts")
+    logger = logging.getLogger("PawBotAlerts")
     handler.setFormatter(formatter)
     logger.setLevel(logging.NOTSET)
     logger.addHandler(handler)
