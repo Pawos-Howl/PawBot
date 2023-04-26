@@ -1,11 +1,8 @@
 import discord, os, logging
 from discord.ext.commands import Bot, CommandNotFound
 from discord.app_commands.errors import CommandInvokeError
-
-import platform # Check OS
-if platform.system() == "Darwin": # MacOS
-    from dotenv import load_dotenv
-    load_dotenv()
+from dotenv import load_dotenv
+load_dotenv()
 
 # Thank you Ovlic for the code
 #\u001b[38;5;82;1m
@@ -39,11 +36,12 @@ class PawBot(Bot):
             raise ex.__cause__
 
     async def setup_hook(self):
-        self.tree.copy_global_to(guild=self.MY_GUILD)
-        await self.tree.sync(guild=self.MY_GUILD)
         #Cog Imports
         await self.load_extension('greetingCommands')
         await self.load_extension('JoinAndLeave')
         await self.load_extension('reactionRoles')
         await self.load_extension('tests')
         await self.load_extension('info')
+        #Leave at the bottom
+        self.tree.copy_global_to(guild=self.MY_GUILD)
+        await self.tree.sync(guild=self.MY_GUILD)

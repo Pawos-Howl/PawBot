@@ -7,7 +7,7 @@ class Info(commands.Cog):
     def __init__(self, client):
         self.client: PawBot = client
 
-    @app_commands.command(name="info")
+    @app_commands.command()
     async def info(interaction: discord.Interaction, member: discord.Member): # This is how you do slash commands; switched ctx for interaction
         """Tells you some info about the member."""
         msg = f'{member} joined on {member.joined_at} and has {len(member.roles)} roles.'

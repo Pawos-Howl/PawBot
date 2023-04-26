@@ -2,15 +2,11 @@ import os, discord
 from discord.errors import NotFound
 from discord.ext.commands import Cog
 from discord.app_commands.errors import CommandNotFound as AppCommandNotFound, CommandInvokeError
-# The following two lines break my code on windows. use on Mac (\n for spaces): from dotenv import load_dotenv \n load_dotenv()
+from dotenv import load_dotenv
+load_dotenv()
 from bot import PawBot
 from utils import setupLogger
 logger = setupLogger()
-
-import platform # Check OS
-if platform.system() == "Darwin": # MacOS
-    from dotenv import load_dotenv
-    load_dotenv()
 
 TOKEN = os.getenv('DISCORD_TOKEN')
 def setup(client):
