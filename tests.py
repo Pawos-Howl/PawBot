@@ -9,5 +9,9 @@ class Tests(commands.Cog):
     async def generalTest(self, ctx):
         await ctx.send(':3')
 
+    @commands.command()
+    async def kill(self, ctx):
+        await ctx.send("*dies*")
+
 async def setup(bot):
     await bot.add_cog(Tests(bot))

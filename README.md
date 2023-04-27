@@ -4,7 +4,7 @@ Pawbot is a Discord bot that has some minor functionality. It will be updated wi
 The following is a list of a few commands that exist and do something sometimes. The prefix is "!paw"
 - [Hewwo](#hewwo-command)
 - [Hello](#hello-command)
-- [Info (currently having issues)](#info-command)
+- [Info](#info-command)
 - [General Test](#general-test-command)
 
 ## Passive Commands
