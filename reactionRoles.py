@@ -3,6 +3,7 @@ from discord import app_commands
 from discord.ext import commands
 from bot import PawBot
 
+## WARN: THIS DOESN'T WORK AS INTENDED RIGHT NOW!
 class verifiedRole(commands.Cog):
     def __init__(self, client):
         self.client: PawBot = client
