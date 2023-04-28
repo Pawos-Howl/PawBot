@@ -31,19 +31,8 @@ async def on_app_command_error(interaction: discord.Interaction, error:Exception
 
     logger.exception(error)
 
-@client.command()
-async def hewwo(ctx, member: discord.member):
-    await ctx.send(f'Hewwo {member}! How are you doing?')
-
-#Might work in "tests" file
 # @client.command()
-# async def generalTest(ctx):
-#     await ctx.send('STANDARD TEST:\nRETURNED TRUE. TEST SUCESSFUL.')
-
-# @client.tree.command()
-# async def info(interaction: discord.Interaction, member: discord.Member): # This is how you do slash commands; switched ctx for interaction
-#     """Tells you some info about the member."""
-#     msg = f'{member} joined on {member.joined_at} and has {len(member.roles)} roles.'
-#     await interaction.response.send_message(msg) # Instead of ctx.send, use interaction.response.send_message
+# async def hewwo(ctx, member: discord.member):
+#     await ctx.send(f'Hewwo {member}! How are you doing?')
 
 client.run(TOKEN) # This ALWAYS is at the bottom of the file no matter what

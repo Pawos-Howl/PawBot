@@ -17,5 +17,9 @@ class Greetings(commands.Cog):
             await ctx.send(f'Hello {member.name}... This feels familiar.')
         self._last_member = member
 
+    @commands.command()
+    async def hewwo(ctx, member: discord.member):
+        await ctx.send(f'Hewwo {member}! How are you doing?')
+
 async def setup(bot):
     await bot.add_cog(Greetings(bot))

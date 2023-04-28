@@ -12,11 +12,12 @@ class JoinAndLeave(commands.Cog):
         await channel.send(
         f'Hewwo {member.name}! Welcome to the Pawos Howl Gang! This bot was coded by Paw (with some help from friends). Have fun and enjoy your stay! -Pawos Howl'
         )
+        await self.client.get_channel(self.client.JOIN_AND_LEAVE_CHANNEL).send(f"{member} has joined")
 
     @commands.Cog.listener()
     async def on_member_remove(self, member):
-        pass #temporary
-        #await self.client.get_channel(self.client.JOIN_AND_LEAVE_CHANNEL).send(f"{member.name} has left")
+        #pass #temporary
+        await self.client.get_channel(self.client.JOIN_AND_LEAVE_CHANNEL).send(f"{member} has left")
 
 async def setup(bot):
     await bot.add_cog(JoinAndLeave(bot))

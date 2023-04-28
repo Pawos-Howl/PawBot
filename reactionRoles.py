@@ -8,37 +8,27 @@ class verifiedRole(commands.Cog):
         self.client: PawBot = client
 
     #Sauce of some of this amazing code: https://stackoverflow.com/questions/52210855/give-role-when-a-user-add-reaction-discord-py
-    # @client.event
-    # async def on_ready():
-    #     Channel = client.get_channel(self.VERIFIED_CHANNEL)
-    #     Moji = await Channel.send("Text")
-    #     await Moji.add_reaction('✅') #:white_chek_mark:
-
-    # @client.tree.command()
-    # async def info(interaction: discord.Interaction, member: discord.Member):
-    #     """Tells you some info about the member."""
-    #     msg = f'{member} joined on {member.joined_at} and has {len(member.roles)} roles.'
-    #     await interaction.response.send_message(msg)
-
     @app_commands.command(name="verifiedtrigger")
     async def verifiedTrigger(self, interaction: discord.Interaction):
         """[WIP!] Trigger the message for the verification message to be sent!"""
-        if interaction.user.id == self.client.MY_USER_ID:
+        if discord.Object(id=int(interaction.user.id)) == self.client.MY_USER_ID:
             msg = "By reacting to this message, you will gain access to the rest of the server and agree to our server rules."
             await interaction.response.send_message(msg)
             await msg.add_reaction('✅')
         else:
-            channel = await interaction.user.create_dm()
-            await channel.send(
-            f'{interaction.user}! You are not allowed to run the `verifiedTrigger` command! Your attempt will be logged.'
-            )
+            # channel = await interaction.user.create_dm()
+            # await channel.send(
+            # f'{interaction.user}! You are not allowed to run the `verifiedTrigger` command! Your attempt will be logged.'
+            # )
+            embed = discord.Embed(title='Reloaded', description=f'{interaction.user}! You are not allowed to run the `verifiedTrigger` command! Your attempt will be logged.', color=0xff00c8)
+            await interaction.response.send_message(embed=embed, ephemeral=True)
             channel = self.client.get_channel(self.client.VERIFIED_CHANNEL)
             await channel.send(
             f'NOT ALLOWED COMMAND USAGE ALERT! User: {interaction.user} (User ID: {interaction.user.id}) Violating command: `verifiedTrigger`'
             )
     
     @commands.Cog.listener()
-    async def on_raw_reaction_add(self, reaction, user):
+    async def on_raw_reaction_add(self, reaction, user: discord.User):
         Channel = self.client.get_channel(self.client.VERIFIED_CHANNEL)
         if reaction.message.channel.id != Channel.id:
             return
@@ -47,7 +37,7 @@ class verifiedRole(commands.Cog):
             await user.add_roles(Role)
 
     @commands.Cog.listener()
-    async def on_raw_reaction_remove(self, reaction, interaction: discord.Interaction):
+    async def on_raw_reaction_remove(self, reaction, interaction: discord.Interaction, user: discord.User):
         Channel = self.client.get_channel(self.client.VERIFIED_CHANNEL)
         if reaction.message.channel.id != Channel.id:
             return

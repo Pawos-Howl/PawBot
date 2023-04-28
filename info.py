@@ -13,5 +13,9 @@ class Info(commands.Cog):
         msg = f'{member} joined on {member.joined_at} and has {len(member.roles)} roles.'
         await interaction.response.send_message(msg) # Instead of ctx.send, use interaction.response.send_message
 
+    @commands.command()
+    async def sourceCode(self, ctx, member: discord.Member):
+        await ctx.send(f'Well, {member.name}, I am open source! You can find my souce code at https://github.com/Pawos-Howl/PawBot/. Have fun with the source code!')
+
 async def setup(bot):
     await bot.add_cog(Info(bot))
