@@ -14,8 +14,16 @@ class verifiedRole(commands.Cog):
         """[WIP!] Trigger the message for the verification message to be sent!"""
         if discord.Object(id=int(interaction.user.id)) == self.client.MY_USER_ID:
             msg = "By reacting to this message, you will gain access to the rest of the server and agree to our server rules."
-            await interaction.response.send_message(msg)
-            await msg.add_reaction('✅')
+            actual_msg = await interaction.response.send_message(msg) # Create a variable to get the actual message class
+            await actual_msg.add_reaction('✅') # Add the reaction to the actual message, not the text
+            
+            # If you want to save the message so you dont have to rerun the command every time
+            # then you should save the message id as a variable then load the message with that.
+            # Ovlic: Remember that you are trying to get the ctx from the reaction.message
+            # See: https://stackoverflow.com/questions/63819901/how-can-i-get-a-discord-context-object-from-the-on-message-event
+            # See: https://stackoverflow.com/questions/61851174/how-to-get-message-by-id-discord-py
+        
+        
         else:
             # channel = await interaction.user.create_dm()
             # await channel.send(
@@ -25,12 +33,13 @@ class verifiedRole(commands.Cog):
             await interaction.response.send_message(embed=embed, ephemeral=True)
             channel = self.client.get_channel(self.client.VERIFIED_CHANNEL)
             await channel.send(
-            f'NOT ALLOWED COMMAND USAGE ALERT! User: {interaction.user} (User ID: {interaction.user.id}) Violating command: `verifiedTrigger`'
+                f'NOT ALLOWED COMMAND USAGE ALERT! User: {interaction.user} (User ID: {interaction.user.id}) Violating command: `verifiedTrigger`'
             )
     
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, reaction, user: discord.User):
         Channel = self.client.get_channel(self.client.VERIFIED_CHANNEL)
+
         if reaction.message.channel.id != Channel.id:
             return
         if reaction.emoji == "✅":
@@ -51,6 +60,8 @@ class verifiedRole(commands.Cog):
             # Below is commented out, because the client shouldn't be able to unverify themselves :3
             #Role = discord.utils.get(user.server.roles, name="YOUR_ROLE_NAME_HERE")
             #await user.remove_roles(Role)
+
+
 
 class reactionRoles(commands.Cog):
     def __init__(self, client):

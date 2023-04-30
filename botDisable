@@ -1,0 +1,23 @@
+import discord
+from discord.ext import commands
+from bot import PawBot
+
+class botDisable(commands.Cog):
+    def __init__(self, client):
+        self.client: PawBot = client
+        self._last_member = None
+
+    @commands.command()
+    async def killBot(self, ctx, member: discord.member):
+        if discord.Object(id=int(member.id)) == self.client.MY_USER_ID:
+            await ctx.send("With funeral trupets blaring, PawBot will now stop itself.")
+            try:
+                quit()
+            except:
+                await ctx.send("There has been an error. Pawbot gets to live. >:3")
+        
+        else:
+            await ctx.send('>:c\nBitch, you are not allowed to do that!')
+
+async def setup(bot):
+    await bot.add_cog(botDisable(bot))

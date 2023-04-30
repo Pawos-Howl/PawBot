@@ -43,6 +43,8 @@ class PawBot(Bot):
         await self.load_extension('tests')
         await self.load_extension('info')
         await self.load_extension('rollDice')
+        await self.load_extension('affection')
+        await self.load_extension('botDisable')
         #Leave at the bottom
         self.tree.copy_global_to(guild=self.MY_GUILD)
         await self.tree.sync(guild=self.MY_GUILD)
