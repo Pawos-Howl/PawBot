@@ -15,9 +15,8 @@ class botDisable(commands.Cog):
                 quit()
             except:
                 await ctx.send("There has been an error. Pawbot gets to live. >:3")
-        
         else:
-            await ctx.send('>:c\nBitch, you are not allowed to do that!')
+            await ctx.send('>:c\nYou are not allowed to do that!')
 
 async def setup(bot):
     await bot.add_cog(botDisable(bot))
