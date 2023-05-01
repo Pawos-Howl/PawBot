@@ -8,9 +8,9 @@ class botDisable(commands.Cog):
         self._last_member = None
 
     @commands.command()
-    async def killBot(self, ctx, member: discord.member):
-        if discord.Object(id=int(member.id)) == self.client.MY_USER_ID:
-            await ctx.send("With funeral trupets blaring, PawBot will now stop itself.")
+    async def killBot(self, ctx):
+        if discord.Object(id=int(ctx.author.id)) == self.client.MY_USER_ID:
+            await ctx.send("PawBot will now try to stop itself.")
             try:
                 quit()
             except:
