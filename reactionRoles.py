@@ -25,11 +25,7 @@ class verifiedRole(commands.Cog):
         
         
         else:
-            # channel = await interaction.user.create_dm()
-            # await channel.send(
-            # f'{interaction.user}! You are not allowed to run the `verifiedTrigger` command! Your attempt will be logged.'
-            # )
-            embed = discord.Embed(title='Reloaded', description=f'{interaction.user}! You are not allowed to run the `verifiedTrigger` command! Your attempt will be logged.', color=0xff00c8)
+            embed = discord.Embed(title='ERROR', description=f'{interaction.user}! You are not allowed to run the `verifiedTrigger` command! Your attempt will be logged.', color=0xff00c8)
             await interaction.response.send_message(embed=embed, ephemeral=True)
             channel = self.client.get_channel(self.client.VERIFIED_CHANNEL)
             await channel.send(
