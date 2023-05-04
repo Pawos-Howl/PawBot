@@ -8,6 +8,10 @@ class Greetings(commands.Cog):
         self._last_member = None
 
     @commands.command()
+    async def generalTest(self, ctx):
+        await ctx.send(':3')
+
+    @commands.command()
     async def hello(self, ctx, *, member: discord.Member = None):
         """Says hello"""
         member = member or ctx.author

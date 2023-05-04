@@ -40,7 +40,6 @@ class PawBot(Bot):
         await self.load_extension('greetingCommands')
         await self.load_extension('JoinAndLeave')
         await self.load_extension('reactionRoles')
-        await self.load_extension('tests')
         await self.load_extension('info')
         await self.load_extension('rollDice')
         await self.load_extension('affection')
