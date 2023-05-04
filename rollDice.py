@@ -22,9 +22,5 @@ class rolling(commands.Cog):
         msg = f'The random number is {randValue}'
         await interaction.response.send_message(msg)
 
-    @app_commands.command()
-    async def rolls(self, interaction: discord.interactions, value: str):
-        pass #take an input, seperate it, and do stuff with it. (ex: 4d20 would roll 4 D20s)
-
 async def setup(bot):
     await bot.add_cog(rolling(bot))
