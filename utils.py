@@ -3,6 +3,18 @@ import logging
 from datetime import datetime
 from pytz import timezone
 
+# Make a list of the ids of users that can run commands
+# that only the bot owner can run
+# Currently, you (Aaron) and me (Justin) are the only ids in the list
+owner_ids = [465502194381225994, 675559827425984582]
+
+# True or false check to see if an id is in the owner_ids list
+# This can be used above commands to make them only work if this
+# check returns true by doing (above the function call but below the command @):
+# make sure to import it too
+# @commands.check(utils.check_owner)
+check_owner = lambda id: id in owner_ids
+
 def toDateTime(str_time):
     str_time = str_time.replace("T", "-").replace("Z", "").split(".")[0]
     date = datetime.strptime(str_time, "%Y-%m-%d-%H:%M:%S")
