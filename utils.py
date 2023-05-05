@@ -5,7 +5,6 @@ from pytz import timezone
 
 # Make a list of the ids of users that can run commands
 # that only the bot owner can run
-# Currently, you (Aaron) and me (Justin) are the only ids in the list
 owner_ids = [465502194381225994, 675559827425984582]
 
 # True or false check to see if an id is in the owner_ids list
