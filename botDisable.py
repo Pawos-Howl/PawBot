@@ -1,4 +1,4 @@
-import discord, sys
+import discord
 from discord.ext import commands
 from bot import PawBot
 
@@ -12,7 +12,7 @@ class botDisable(commands.Cog):
         if discord.Object(id=int(ctx.author.id)) == self.client.MY_USER_ID:
             # This will cause many errors on the discord package, but it works. "https://www.scaler.com/topics/how-to-end-program-in-python/" if I want to fix it
             await ctx.send("Terminating...")
-            sys.exit("Terminating")
+            exit("Terminating")
         else:
             await ctx.send('>:c\nYou are not allowed to do that!')
 

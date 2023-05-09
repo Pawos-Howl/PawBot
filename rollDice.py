@@ -8,7 +8,7 @@ class rolling(commands.Cog):
         self.client: PawBot = client
 
     @app_commands.command()
-    async def roll(interaction: discord.Interaction, number: int, add: int = None):
+    async def roll(self, interaction: discord.Interaction, number: int, add: int = None):
         randValue = random.randint(1, number)
         if add == None: msg = f'The random number is {randValue}'
         if add != None: msg = f'The random number is {randValue+add}.\nWhich accounts for an added {add}, and the original number was {randValue}'
