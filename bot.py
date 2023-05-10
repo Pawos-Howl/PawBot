@@ -1,8 +1,6 @@
-import discord, os, logging
+import discord, logging
 from discord.ext.commands import Bot, CommandNotFound
 from discord.app_commands.errors import CommandInvokeError
-from dotenv import load_dotenv
-load_dotenv()
 
 # Thank you Ovlic for the code
 #\u001b[38;5;82;1m
@@ -11,7 +9,8 @@ log = logging.getLogger("PawBot.\u001b[38;5;82;1mBot\u001b[0m")
 class PawBot(Bot):
     def __init__(self):
         super().__init__(intents=discord.Intents.all(),command_prefix="!paw ") # Do not set the command prefix to / since that is the default for slash commands
-        self.MY_GUILD = discord.Object(id=int(os.getenv('DISCORD_GUILD'))) # Set this to the guild ID you want to use slash commands
+        self.MY_GUILD = discord.Object(id=int(1023691852072886332)) # Set this to the guild ID you want to use slash commands
+        #self.BOT_ID = Bot.user.id
         self.MY_USER_ID =  discord.Object(id=int(979210001556070491))
         self.JOIN_AND_LEAVE_CHANNEL = discord.Object(id=int(1097030111125045279))
         self.VERIFIED_CHANNEL = discord.Object(id=int(1092923045427027998))
