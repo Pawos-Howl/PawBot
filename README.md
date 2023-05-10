@@ -1,4 +1,5 @@
 # PawBot
+# THIS IS OUT OF DATE! I AM TOO LAZY TO FIX IT! *Merp*
 Pawbot is a Discord bot that has some minor functionality. It will be updated with more functionality in the future
 ## Current Commands
 The following is a list of a few commands that exist and do something sometimes. The prefix is "!paw"
