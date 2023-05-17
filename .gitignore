@@ -1,3 +1,4 @@
 .env
 __pycache__/
 *PFP*.png
+__flags__/*
