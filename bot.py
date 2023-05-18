@@ -1,4 +1,5 @@
 import discord, logging
+from discord.ext import commands
 from discord.ext.commands import Bot, CommandNotFound
 from discord.app_commands.errors import CommandInvokeError
 
@@ -33,6 +34,27 @@ class PawBot(Bot):
         else:
             log.exception(ex)
             raise ex.__cause__
+
+    # This is the stuff for the whitelist
+    # class NotInWhiteList(commands.CheckFailure):
+    #     pass
+
+    # def in_whitelist(whitelist):
+    #     async def inner_check(ctx):
+    #         if ctx.author.id not in whitelist:
+    #             raise NotInWhiteList("You're not on the whitelist!")
+    #         return True
+    #     return commands.check(inner_check)
+
+    # @bot.event
+    # async def on_command_error(ctx, error):
+    #     if isinstance(error, NotInWhiteList):
+    #         await ctx.author.send(error)
+
+    # @bot.command()
+    # @in_whitelist(WHITELIST_IDS)
+    # async def test(ctx):
+    #     await ctx.send("You do have permission")
 
     async def setup_hook(self):
         #Cog Imports

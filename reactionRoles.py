@@ -22,6 +22,7 @@ class verifiedRole(commands.Cog):
             # Ovlic: Remember that you are trying to get the ctx from the reaction.message
             # See: https://stackoverflow.com/questions/63819901/how-can-i-get-a-discord-context-object-from-the-on-message-event
             # See: https://stackoverflow.com/questions/61851174/how-to-get-message-by-id-discord-py
+            # See: https://stackoverflow.com/questions/52561613/python-discord-py-detect-if-a-message-invokes-any-commands
         
         
         else:

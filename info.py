@@ -17,5 +17,11 @@ class Info(commands.Cog):
     async def sourceCode(self, ctx, member: discord.Member):
         await ctx.send(f'Well, {member.name}, I am open source! You can find my souce code at https://github.com/Pawos-Howl/PawBot/. Have fun with the source code!')
 
+    @app_commands.command(name="report")
+    async def report(self, interaction: discord.Interaction, member: discord.Member):
+        ## From here, a file must be saved in the directory, as anything at all. Easier system to fix things. 
+        pass
+        
+
 async def setup(bot):
     await bot.add_cog(Info(bot))

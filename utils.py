@@ -97,3 +97,10 @@ def setupLogger():
     logger.addHandler(handler)
     
     return logger
+
+def UTCNow():
+    bark = datetime.datetime.now(tz=utc)
+    return bark
+
+def createFlag(UserID, flag):
+    newFile = f'__flags__/{datetime.now()}'
