@@ -1,5 +1,4 @@
 import discord, logging
-from discord.ext import commands
 from discord.ext.commands import Bot, CommandNotFound
 from discord.app_commands.errors import CommandInvokeError
 
@@ -11,7 +10,6 @@ class PawBot(Bot):
     def __init__(self):
         super().__init__(intents=discord.Intents.all(),command_prefix="!paw ") # Do not set the command prefix to / since that is the default for slash commands
         self.MY_GUILD = discord.Object(id=int(1023691852072886332)) # Set this to the guild ID you want to use slash commands
-        #self.BOT_ID = Bot.user.id
         self.MY_USER_ID =  discord.Object(id=int(979210001556070491))
         self.JOIN_AND_LEAVE_CHANNEL = discord.Object(id=int(1097030111125045279))
         self.VERIFIED_CHANNEL = discord.Object(id=int(1092923045427027998))
@@ -35,36 +33,23 @@ class PawBot(Bot):
             log.exception(ex)
             raise ex.__cause__
 
-    # This is the stuff for the whitelist
-    # class NotInWhiteList(commands.CheckFailure):
-    #     pass
-
-    # def in_whitelist(whitelist):
-    #     async def inner_check(ctx):
-    #         if ctx.author.id not in whitelist:
-    #             raise NotInWhiteList("You're not on the whitelist!")
-    #         return True
-    #     return commands.check(inner_check)
-
-    # @bot.event
-    # async def on_command_error(ctx, error):
-    #     if isinstance(error, NotInWhiteList):
-    #         await ctx.author.send(error)
-
-    # @bot.command()
-    # @in_whitelist(WHITELIST_IDS)
-    # async def test(ctx):
-    #     await ctx.send("You do have permission")
-
     async def setup_hook(self):
+        for guild in self.guilds:
+            await self.load_extension('greetingCommands')
+            await self.load_extension('JoinAndLeave')
+            await self.load_extension('reactionRoles')
+            await self.load_extension('info')
+            await self.load_extension('affection')
+            await self.load_extension('botDisable')
+            self.tree.copy_global_to(guild=guild)
+            await self.tree.sync(guild=guild)
         #Cog Imports
-        await self.load_extension('greetingCommands')
-        await self.load_extension('JoinAndLeave')
-        await self.load_extension('reactionRoles')
-        await self.load_extension('info')
-        await self.load_extension('rollDice')
-        await self.load_extension('affection')
-        await self.load_extension('botDisable')
+        # await self.load_extension('greetingCommands')
+        # await self.load_extension('JoinAndLeave')
+        # await self.load_extension('reactionRoles')
+        # await self.load_extension('info')
+        # await self.load_extension('affection')
+        # await self.load_extension('botDisable')
         #Leave at the bottom
-        self.tree.copy_global_to(guild=self.MY_GUILD)
-        await self.tree.sync(guild=self.MY_GUILD)
+        # self.tree.copy_global_to(guild=self.MY_GUILD)
+        # await self.tree.sync(guild=self.MY_GUILD)
