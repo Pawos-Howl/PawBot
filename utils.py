@@ -99,7 +99,8 @@ def setupLogger():
     return logger
 
 def UTCNow():
-    bark = datetime.datetime.now(tz=utc)
+    # For this you already import datetime from datetime so you dont need it twice
+    bark = datetime.now(tz=timezone('UTC')) # Fixed this for you
     return bark
 
 def createFlag(UserID, flag):
