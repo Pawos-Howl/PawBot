@@ -13,7 +13,6 @@ class PawBot(Bot):
         # instead of having them here. It will make it easier to read
         # and understand in the future.
         self.MY_GUILD = discord.Object(id=int(1023691852072886332)) # Set this to the guild ID you want to use slash commands
-        self.MY_USER_ID =  discord.Object(id=int(979210001556070491))
         self.JOIN_AND_LEAVE_CHANNEL = discord.Object(id=int(1097030111125045279))
         self.VERIFIED_CHANNEL = discord.Object(id=int(1092923045427027998))
         self.ROLES_CHANNEL = discord.Object(id=int(1092923070211162133))

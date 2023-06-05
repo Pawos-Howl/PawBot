@@ -9,7 +9,7 @@ class botDisable(commands.Cog):
 
     @commands.command()
     async def killBot(self, ctx):
-        if discord.Object(id=int(ctx.author.id)) == self.client.MY_USER_ID:
+        if int(ctx.author.id) == 979210001556070491:
             # This will cause many errors on the discord package, but it works. "https://www.scaler.com/topics/how-to-end-program-in-python/" if I want to fix it
             await ctx.send("Terminating...")
             exit("Terminating")
