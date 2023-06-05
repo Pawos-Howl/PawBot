@@ -22,7 +22,7 @@ class PawBot(Bot):
         # ↓↓↓ Also a good habit to do is to move your super inits to the bottom
         # of the __init__ function so you can initialize the other variables
         # first then get the rest of the stuff from the super init.
-        super().__init__(intents=discord.Intents.all(),command_prefix="!paw ") # Do not set the command prefix to / since that is the default for slash commands
+        super().__init__(intents=discord.Intents.all(),command_prefix="!paw ")
 
     async def on_ready(self): # All this function really needs to do is just say that its online, no need for any fancy stuff
         print("Bot is online!")
@@ -77,7 +77,7 @@ class PawBot(Bot):
         #    if interaction.user.id in utils.owner_ids:
         #       await interaction.response.send_message("Syncing commands...", ephemeral=True)
         #       await client.tree.sync()
-        #       await interaction.edit_original_message(content="Synced commands!", ephemeral=True) # idk if ephemeral is needed here
+        #       await interaction.edit_original_message(content="Synced commands!", ephemeral=True)
         #    else:
         #       await interaction.response.send_message("You are not allowed to run this command!", ephemeral=True)
         
